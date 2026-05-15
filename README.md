@@ -68,7 +68,6 @@ chmod +x run.sh
 - [parsers.py](parsers.py): parsare si conversie pentru output-ul Docker
 - [run.sh](run.sh): rulare rapida din Linux/WSL
 - [DOCUMENTATIE.md](DOCUMENTATIE.md): documentatie tehnica extinsa
-- [PREZENTARE_ORALA.md](PREZENTARE_ORALA.md): text scurt pentru sustinere
 
 ## Comenzi Docker folosite
 
@@ -104,19 +103,6 @@ Daca introduci o comanda pentru `-c` si lasi programul gol, aplicatia foloseste 
 - monitorizarea resurselor este pe baza de refresh, nu streaming continuu
 - `docker run` foloseste un formular simplu, fara validare avansata pentru toate optiunile Docker
 - proiectul este gandit pentru Linux/WSL, nu pentru executie directa din PowerShell
-
-## Capturi de ecran
-
-Folderul [screenshots](screenshots) este pregatit pentru capturi locale. PNG-urile sunt ignorate in Git prin `.gitignore`.
-
-## Arhivare ZIP
-
-Pentru arhiva locala de predare:
-
-```bash
-chmod +x create_zip.sh
-./create_zip.sh
-```
 
 ## Referinte
 
