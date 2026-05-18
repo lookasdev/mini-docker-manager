@@ -162,3 +162,5 @@ chmod +x run.sh
 - documentatia Docker CLI pentru format JSON si stats
 - materialele de curs despre procese, apeluri de sistem si integrarea Python cu shell-ul Linux
 - copilot VS Code (pentru actiunea de refresh care ruleaza acum in background si nu pe thread-ul UI, pentru a nu avea lag, si nu numai - nu am gasit link de partajare direct din aplicatie)
+
+- url GitHub: https://github.com/lookasdev/mini-docker-manager
