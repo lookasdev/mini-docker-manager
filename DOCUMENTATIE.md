@@ -161,4 +161,4 @@ chmod +x run.sh
 - documentatia oficiala Python pentru `subprocess` si Tkinter
 - documentatia Docker CLI pentru format JSON si stats
 - materialele de curs despre procese, apeluri de sistem si integrarea Python cu shell-ul Linux
-- copilot de pe VS Code pentru actiunea de refresh care ruleaza acum in background, nu pe thread-ul UI, pentru a nu avea lag
+- copilot VS Code (pentru actiunea de refresh care ruleaza acum in background si nu pe thread-ul UI, pentru a nu avea lag, si nu numai - nu am gasit link de partajare direct din aplicatie)

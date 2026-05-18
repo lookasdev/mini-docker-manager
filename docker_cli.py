@@ -3,8 +3,8 @@ import subprocess
 from parsers import extract_memory_usage, parse_json_lines
 
 
-DOCKER_NOT_FOUND_MESSAGE = "Comanda 'docker' nu a fost găsită. Rulează aplicația din Linux/WSL și verifică Docker CLI."
-DOCKER_TIMEOUT_MESSAGE = "Comanda Docker a expirat. Verifică dacă daemonul Docker răspunde."
+DOCKER_NOT_FOUND_MESSAGE = "Comanda 'docker' nu a fost gasita - ruleaza aplicatia din Linux/WSL si verifica Docker CLI."
+DOCKER_TIMEOUT_MESSAGE = "Comanda Docker a expirat - verifica daca daemonul Docker raspunde."
 
 
 class DockerCommandError(RuntimeError):
@@ -28,7 +28,7 @@ def _run_docker_command(args: list[str], timeout: int = 8) -> str:
         raise DockerCommandError(DOCKER_TIMEOUT_MESSAGE) from error
 
     if completed.returncode != 0:
-        message = completed.stderr.strip() or completed.stdout.strip() or "Eroare necunoscută Docker."
+        message = completed.stderr.strip() or completed.stdout.strip() or "eroare necunoscuta docker"
         raise DockerCommandError(message)
 
     return completed.stdout

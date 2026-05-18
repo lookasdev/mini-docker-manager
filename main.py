@@ -183,7 +183,7 @@ class DockerManagerApp:
             "id": ("ID", 120),
             "name": ("Container", 180),
             "cpu": ("CPU", 90),
-            "memory": ("Memorie folosită", 140),
+            "memory": ("Memorie folosita", 140),
             "net_io": ("Network I/O", 170),
             "block_io": ("Block I/O", 150),
             "pids": ("PIDs", 80),
@@ -262,7 +262,7 @@ class DockerManagerApp:
         try:
             start_container(container["id"])
         except DockerCommandError as error:
-            self._show_error(f"Start eșuat pentru {container['name']}: {error}")
+            self._show_error(f"Start esuat pentru {container['name']}: {error}")
             return
 
         self.refresh_data(notify_errors=False)
@@ -275,7 +275,7 @@ class DockerManagerApp:
         try:
             stop_container(container["id"])
         except DockerCommandError as error:
-            self._show_error(f"Stop eșuat pentru {container['name']}: {error}")
+            self._show_error(f"Stop esuat pentru {container['name']}: {error}")
             return
 
         self.refresh_data(notify_errors=False)
@@ -286,8 +286,8 @@ class DockerManagerApp:
             return
 
         confirmed = messagebox.askyesno(
-            "Confirmare ștergere",
-            f"Vrei să ștergi forțat containerul {container['name']}?",
+            "Confirmare stergere",
+            f"Vrei sa stergi fortat containerul {container['name']}?",
             parent=self.root,
         )
         if not confirmed:
@@ -296,7 +296,7 @@ class DockerManagerApp:
         try:
             remove_container(container["id"])
         except DockerCommandError as error:
-            self._show_error(f"Ștergere eșuată pentru {container['name']}: {error}")
+            self._show_error(f"stergere esuata pentru {container['name']}: {error}")
             return
 
         self.refresh_data(notify_errors=False)
@@ -309,7 +309,7 @@ class DockerManagerApp:
         try:
             restart_container(container["id"])
         except DockerCommandError as error:
-            self._show_error(f"Restart eșuat pentru {container['name']}: {error}")
+            self._show_error(f"Restart esuat pentru {container['name']}: {error}")
             return
 
         self.refresh_data(notify_errors=False)
@@ -335,7 +335,7 @@ class DockerManagerApp:
         try:
             output = inspect_container(container["id"])
         except DockerCommandError as error:
-            self._show_error(f"Inspect eșuat pentru {container['name']}: {error}")
+            self._show_error(f"Inspect esuat pentru {container['name']}: {error}")
             return
 
         self._show_output_window(f"Inspect: {container['name']}", output)
@@ -412,18 +412,18 @@ class DockerManagerApp:
         self._refresh_images()
 
     def pull_image_dialog(self) -> None:
-        image_name = simpledialog.askstring("Docker pull", "Imagine Docker de descărcat:", parent=self.images_window or self.root)
+        image_name = simpledialog.askstring("Docker pull", "Imagine Docker de descarcat:", parent=self.images_window or self.root)
         if not image_name:
             return
 
         try:
             output = pull_image(image_name.strip())
         except DockerCommandError as error:
-            self._show_error(f"Pull eșuat pentru {image_name}: {error}", parent=self.images_window)
+            self._show_error(f"Pull esuat pentru {image_name}: {error}", parent=self.images_window)
             return
 
         self._refresh_images()
-        self._show_output_window(f"Pull: {image_name}", output or f"Imagine descărcată: {image_name}")
+        self._show_output_window(f"Pull: {image_name}", output or f"Imagine descarcata: {image_name}")
 
     def run_container_dialog(self) -> None:
         default_image = self._selected_image_ref()
@@ -438,7 +438,7 @@ class DockerManagerApp:
 
         container_name = simpledialog.askstring(
             "Docker run",
-            "Nume container (opțional):",
+            "Nume container (optional):",
             parent=self.images_window or self.root,
         )
         if container_name is None:
@@ -446,7 +446,7 @@ class DockerManagerApp:
 
         port_mapping = simpledialog.askstring(
             "Docker run",
-            "Mapare porturi host:container (opțional, ex. 8080:80):",
+            "Mapare porturi host:container (optional, ex. 8080:80):",
             parent=self.images_window or self.root,
         )
         if port_mapping is None:
@@ -454,7 +454,7 @@ class DockerManagerApp:
 
         program_name = simpledialog.askstring(
             "Docker run",
-            "Program din container (opțional, ex. /bin/bash):",
+            "Program din container (optional, ex. /bin/bash):",
             parent=self.images_window or self.root,
         )
         if program_name is None:
@@ -462,7 +462,7 @@ class DockerManagerApp:
 
         command_text = simpledialog.askstring(
             "Docker run",
-            "Comandă pentru -c (opțional):",
+            "Comanda pentru -c (optional):",
             parent=self.images_window or self.root,
         )
         if command_text is None:
@@ -477,7 +477,7 @@ class DockerManagerApp:
                 (command_text or "").strip(),
             )
         except DockerCommandError as error:
-            self._show_error(f"Run eșuat pentru {image_name}: {error}", parent=self.images_window)
+            self._show_error(f"Run esuat pentru {image_name}: {error}", parent=self.images_window)
             return
 
         self.refresh_data(notify_errors=False)
@@ -486,12 +486,12 @@ class DockerManagerApp:
     def remove_selected_image(self) -> None:
         image = self._get_selected_image()
         if not image:
-            self._show_warning("Selectează o imagine pentru Remove Image.", parent=self.images_window)
+            self._show_warning("Selecteaza o imagine pentru Remove Image.", parent=self.images_window)
             return
 
         confirmed = messagebox.askyesno(
-            "Confirmare ștergere imagine",
-            f"Vrei să ștergi imaginea {image['ref']}?",
+            "Confirmare stergere imagine",
+            f"Vrei sa stergi imaginea {image['ref']}?",
             parent=self.images_window or self.root,
         )
         if not confirmed:
@@ -500,7 +500,7 @@ class DockerManagerApp:
         try:
             remove_image(image["id"])
         except DockerCommandError as error:
-            self._show_error(f"Ștergere imagine eșuată pentru {image['ref']}: {error}", parent=self.images_window)
+            self._show_error(f"stergere imagine esuata pentru {image['ref']}: {error}", parent=self.images_window)
             return
 
         self._refresh_images()
@@ -617,7 +617,7 @@ class DockerManagerApp:
     def _require_selected_container(self, action_name: str) -> dict | None:
         container = self._get_selected_container()
         if container is None:
-            self._show_warning(f"Selectează un container pentru {action_name}.")
+            self._show_warning(f"Selecteaza un container pentru {action_name}.")
         return container
 
     def _on_container_select(self, _event: object) -> None:
@@ -636,7 +636,7 @@ class DockerManagerApp:
         self.stopped_text.set(f"Stopped: {stopped}")
 
     def _show_warning(self, message: str, parent: tk.Misc | None = None) -> None:
-        messagebox.showwarning("Atenție", message, parent=parent or self.root)
+        messagebox.showwarning("Atentie", message, parent=parent or self.root)
 
     def _show_error(self, message: str, parent: tk.Misc | None = None) -> None:
         messagebox.showerror("Eroare", message, parent=parent or self.root)

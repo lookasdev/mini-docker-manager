@@ -1,8 +1,7 @@
 import json
 
-
+# Parse one JSON object per line and ignore invalid lines
 def parse_json_lines(output: str) -> list[dict]:
-    """Parse one JSON object per line and ignore invalid lines."""
     items: list[dict] = []
     for raw_line in output.splitlines():
         line = raw_line.strip()
@@ -30,9 +29,8 @@ def _split_number_and_unit(value: str) -> tuple[float, str]:
 
     return float("".join(number)), "".join(unit).lower()
 
-
+# convert Docker sizes like KiB, MiB, or GiB to MB
 def parse_size_mb(value: str) -> float:
-    """Convert Docker sizes like KiB, MiB, or GiB to MB."""
     amount, suffix = _split_number_and_unit(value)
 
     if suffix.startswith("g"):
@@ -43,8 +41,7 @@ def parse_size_mb(value: str) -> float:
         return amount / (1024 * 1024)
     return amount
 
-
+# return only the used part from Docker's 'used / limit' memory format
 def extract_memory_usage(value: str) -> str:
-    """Return only the used part from Docker's 'used / limit' memory format."""
     used = value.split("/", maxsplit=1)[0].strip()
     return f"{parse_size_mb(used):.1f} MB"
