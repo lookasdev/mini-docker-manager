@@ -46,6 +46,12 @@ sudo usermod -aG docker $USER
 newgrp docker
 ```
 
+Proiectul a fost testat si rulat pe urmatoarele versiuni:
+```bash
+Python 3.12.3
+Docker version 29.4.2, build 055a478
+```
+
 ## Rulare
 
 Din folderul proiectului:
